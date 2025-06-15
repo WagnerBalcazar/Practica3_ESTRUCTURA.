@@ -1,0 +1,847 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Hilla Application",
+    "version" : "1.0.0"
+  },
+  "servers" : [
+    {
+      "url" : "http://localhost:8080/connect",
+      "description" : "Hilla Backend"
+    }
+  ],
+  "tags" : [
+    {
+      "name" : "CuentaService",
+      "x-class-name" : "com.practica.estructura.base.controller.services.CuentaService"
+    },
+    {
+      "name" : "PersonaService",
+      "x-class-name" : "com.practica.estructura.base.controller.services.PersonaService"
+    },
+    {
+      "name" : "TaskService",
+      "x-class-name" : "com.practica.estructura.taskmanagement.service.TaskService"
+    }
+  ],
+  "paths" : {
+    "/CuentaService/createCuenta" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_createCuenta_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "email" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-validation-constraints" : [
+                      {
+                        "simpleName" : "Email"
+                      },
+                      {
+                        "simpleName" : "NotEmpty"
+                      },
+                      {
+                        "simpleName" : "NotBlank"
+                      }
+                    ],
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "clave" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-validation-constraints" : [
+                      {
+                        "simpleName" : "NotEmpty"
+                      }
+                    ],
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "estado" : {
+                    "type" : "boolean",
+                    "x-java-type" : "boolean"
+                  },
+                  "idPersona" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/CuentaService/lisAllCuenta" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_lisAllCuenta_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.practica.estructura.models.Cuenta"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CuentaService/listAll" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_listAll_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "object"
+                    },
+                    "nullable" : true,
+                    "x-java-type" : "java.util.HashMap"
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CuentaService/listaPersonaCombo" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_listaPersonaCombo_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "object"
+                    },
+                    "nullable" : true,
+                    "x-java-type" : "java.util.HashMap"
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CuentaService/order" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_order_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "atributo" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "type" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "string",
+                      "nullable" : true,
+                      "x-java-type" : "java.lang.String"
+                    },
+                    "nullable" : true,
+                    "x-java-type" : "java.util.HashMap"
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CuentaService/search" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_search_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "attribute" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "text" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "type" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "object"
+                    },
+                    "nullable" : true,
+                    "x-java-type" : "java.util.HashMap"
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/CuentaService/updateCuenta" : {
+      "post" : {
+        "tags" : [
+          "CuentaService"
+        ],
+        "operationId" : "CuentaService_updateCuenta_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  },
+                  "clave" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-validation-constraints" : [
+                      {
+                        "simpleName" : "NotEmpty"
+                      }
+                    ],
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "estado" : {
+                    "type" : "boolean",
+                    "x-java-type" : "boolean"
+                  },
+                  "idPersona" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/PersonaService/createPersona" : {
+      "post" : {
+        "tags" : [
+          "PersonaService"
+        ],
+        "operationId" : "PersonaService_createPersona_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "usuario" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-validation-constraints" : [
+                      {
+                        "simpleName" : "NotEmpty"
+                      }
+                    ],
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "edad" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/PersonaService/lisAllPersona" : {
+      "post" : {
+        "tags" : [
+          "PersonaService"
+        ],
+        "operationId" : "PersonaService_lisAllPersona_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.practica.estructura.models.Persona"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PersonaService/order" : {
+      "post" : {
+        "tags" : [
+          "PersonaService"
+        ],
+        "operationId" : "PersonaService_order_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "atributo" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "type" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "nullable" : true,
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.practica.estructura.models.Persona"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PersonaService/search" : {
+      "post" : {
+        "tags" : [
+          "PersonaService"
+        ],
+        "operationId" : "PersonaService_search_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "atribute" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "text" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "type" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "nullable" : true,
+                  "items" : {
+                    "type" : "object",
+                    "additionalProperties" : {
+                      "type" : "string",
+                      "nullable" : true,
+                      "x-java-type" : "java.lang.String"
+                    },
+                    "nullable" : true,
+                    "x-java-type" : "java.util.HashMap"
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PersonaService/updatePersona" : {
+      "post" : {
+        "tags" : [
+          "PersonaService"
+        ],
+        "operationId" : "PersonaService_updatePersona_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  },
+                  "usuario" : {
+                    "type" : "string",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "edad" : {
+                    "type" : "integer",
+                    "format" : "int32",
+                    "nullable" : true,
+                    "x-java-type" : "java.lang.Integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/TaskService/createTask" : {
+      "post" : {
+        "tags" : [
+          "TaskService"
+        ],
+        "operationId" : "TaskService_createTask_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "description" : {
+                    "type" : "string",
+                    "x-java-type" : "java.lang.String"
+                  },
+                  "dueDate" : {
+                    "type" : "string",
+                    "format" : "date",
+                    "nullable" : true,
+                    "x-java-type" : "java.time.LocalDate"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/TaskService/list" : {
+      "post" : {
+        "tags" : [
+          "TaskService"
+        ],
+        "operationId" : "TaskService_list_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "pageable" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.vaadin.hilla.mappedtypes.Pageable"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.practica.estructura.taskmanagement.domain.Task"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "com.practica.estructura.models.Cuenta" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true,
+            "x-java-type" : "java.lang.Integer"
+          },
+          "email" : {
+            "type" : "string",
+            "nullable" : true,
+            "x-java-type" : "java.lang.String"
+          },
+          "clave" : {
+            "type" : "string",
+            "nullable" : true,
+            "x-java-type" : "java.lang.String"
+          },
+          "estado" : {
+            "type" : "boolean",
+            "x-java-type" : "boolean"
+          },
+          "idPersona" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true,
+            "x-java-type" : "java.lang.Integer"
+          }
+        }
+      },
+      "com.practica.estructura.models.Persona" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true,
+            "x-java-type" : "java.lang.Integer"
+          },
+          "usuario" : {
+            "type" : "string",
+            "nullable" : true,
+            "x-java-type" : "java.lang.String"
+          },
+          "edad" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true,
+            "x-java-type" : "java.lang.Integer"
+          }
+        }
+      },
+      "com.vaadin.hilla.mappedtypes.Pageable" : {
+        "type" : "object",
+        "properties" : {
+          "pageNumber" : {
+            "type" : "integer",
+            "format" : "int32",
+            "x-java-type" : "int"
+          },
+          "pageSize" : {
+            "type" : "integer",
+            "format" : "int32",
+            "x-java-type" : "int"
+          },
+          "sort" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/com.vaadin.hilla.mappedtypes.Sort"
+              }
+            ]
+          }
+        }
+      },
+      "com.practica.estructura.taskmanagement.domain.Task" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/com.practica.estructura.base.domain.AbstractEntity"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer",
+                "format" : "int64",
+                "nullable" : true,
+                "x-java-type" : "java.lang.Long",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.Id"
+                  }
+                ]
+              },
+              "description" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "Size",
+                    "attributes" : {
+                      "max" : 255
+                    }
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "creationDate" : {
+                "type" : "string",
+                "format" : "date-time",
+                "x-java-type" : "java.time.Instant"
+              },
+              "dueDate" : {
+                "type" : "string",
+                "format" : "date",
+                "nullable" : true,
+                "x-java-type" : "java.time.LocalDate"
+              }
+            }
+          }
+        ],
+        "x-type-arguments" : {
+          "allOf" : [
+            {
+              "type" : "integer",
+              "format" : "int64",
+              "x-java-type" : "java.lang.Long"
+            }
+          ]
+        }
+      },
+      "com.vaadin.hilla.mappedtypes.Sort" : {
+        "type" : "object",
+        "properties" : {
+          "orders" : {
+            "type" : "array",
+            "items" : {
+              "nullable" : true,
+              "anyOf" : [
+                {
+                  "$ref" : "#/components/schemas/com.vaadin.hilla.mappedtypes.Order"
+                }
+              ]
+            },
+            "x-java-type" : "java.util.List"
+          }
+        }
+      },
+      "com.practica.estructura.base.domain.AbstractEntity" : {
+        "type" : "object",
+        "x-type-parameters" : [
+          "ID"
+        ]
+      },
+      "com.vaadin.hilla.mappedtypes.Order" : {
+        "type" : "object",
+        "properties" : {
+          "direction" : {
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/org.springframework.data.domain.Sort$Direction"
+              }
+            ]
+          },
+          "property" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotBlank"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "ignoreCase" : {
+            "type" : "boolean",
+            "x-java-type" : "boolean"
+          },
+          "nullHandling" : {
+            "nullable" : true,
+            "anyOf" : [
+              {
+                "$ref" : "#/components/schemas/org.springframework.data.domain.Sort$NullHandling"
+              }
+            ]
+          }
+        }
+      },
+      "org.springframework.data.domain.Sort$Direction" : {
+        "type" : "string",
+        "enum" : [
+          "ASC",
+          "DESC"
+        ]
+      },
+      "org.springframework.data.domain.Sort$NullHandling" : {
+        "type" : "string",
+        "enum" : [
+          "NATIVE",
+          "NULLS_FIRST",
+          "NULLS_LAST"
+        ]
+      }
+    }
+  }
+}
